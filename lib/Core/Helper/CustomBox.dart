@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterstarter/Core/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 SizedBox verticalBox(double height) => SizedBox(
       height: height.h,

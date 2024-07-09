@@ -20,53 +20,53 @@ import 'package:google_fonts/google_fonts.dart';
 /// | labelSmall    | 10.0 | regular |  1.5     |             |
 
 class AppFonts {
-  static TextTheme get _fontTextTheme => GoogleFonts.poppinsTextTheme();
+  static TextTheme get _fontTextTheme => GoogleFonts.outfitTextTheme();
 
   static final _blackheadlineLarge = _fontTextTheme.headlineLarge?.copyWith(
     fontSize: 28.sp,
-    color: AppColors.black,
+    color: AppColors.onBackground,
     fontWeight: FontWeight.bold,
   );
 
   static final _blackheadlineMeduim = _fontTextTheme.headlineMedium?.copyWith(
     fontSize: 24.sp,
-    color: AppColors.black,
+    color: AppColors.onBackground,
     fontWeight: FontWeight.w700,
   );
   static final _blackheadlineSmall = _fontTextTheme.headlineSmall?.copyWith(
     fontSize: 20.sp,
-    color: AppColors.black,
+    color: AppColors.onBackground,
     fontWeight: FontWeight.bold,
   );
 
   static final _blacktitleLarge = _fontTextTheme.titleLarge?.copyWith(
     fontSize: 18.sp,
-    color: Colors.white,
+    color: AppColors.grey,
     fontWeight: FontWeight.w700,
   );
   static final _blacktitleMedium = _fontTextTheme.titleMedium?.copyWith(
     fontSize: 18.sp,
-    color: Colors.white,
+    color: AppColors.grey,
     fontWeight: FontWeight.w500,
   );
   static final _blacktitleSmall = _fontTextTheme.titleSmall?.copyWith(
     fontSize: 16.sp,
-    color: Colors.white,
+    color: AppColors.grey,
     fontWeight: FontWeight.w700,
   );
 
   static final _blackbodyMedium = _fontTextTheme.bodyMedium?.copyWith(
     fontSize: 14.sp,
-    color: Colors.white,
+    color: AppColors.grey,
     fontWeight: FontWeight.w700,
   );
   static final _blackbodySmall = _fontTextTheme.bodySmall?.copyWith(
     fontSize: 14.sp,
-    color: Colors.white,
+    color: AppColors.grey,
   );
   static final _blacklabelLarge = _fontTextTheme.labelLarge?.copyWith(
     fontSize: 12.sp,
-    color: Colors.white,
+    color: AppColors.grey,
     fontWeight: FontWeight.w700,
   );
 
@@ -82,15 +82,5 @@ class AppFonts {
         labelLarge: _blacklabelLarge,
       );
 
-  static get darkThemeText => TextTheme(
-        headlineLarge: _blackheadlineLarge?.copyWith(color: Colors.white),
-        headlineMedium: _blackheadlineMeduim?.copyWith(color: Colors.white),
-        headlineSmall: _blackheadlineSmall?.copyWith(color: Colors.white),
-        titleLarge: _blacktitleLarge?.copyWith(color: Colors.white),
-        titleMedium: _blacktitleMedium?.copyWith(color: Colors.white),
-        titleSmall: _blacktitleSmall?.copyWith(color: Colors.white),
-        bodyMedium: _blackbodyMedium?.copyWith(color: Colors.white),
-        bodySmall: _blackbodySmall?.copyWith(color: Colors.white),
-        labelLarge: _blacklabelLarge?.copyWith(color: Colors.white),
-      );
+
 }
