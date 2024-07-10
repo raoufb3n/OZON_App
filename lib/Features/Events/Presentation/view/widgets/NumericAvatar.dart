@@ -1,11 +1,9 @@
-
-
-
 import '../../../../../Core/index.dart';
 
 class NumericAvatarWidget extends StatelessWidget {
   const NumericAvatarWidget({
-    super.key, required this.num,
+    super.key,
+    required this.num,
   });
   final String num;
 

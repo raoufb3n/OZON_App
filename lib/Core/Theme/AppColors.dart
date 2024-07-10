@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -10,7 +9,7 @@ class AppColors {
   static const grey = Color(0xff2D3A3A);
   static const lightGrey = Color(0xffBAB8B8);
   static const white = Color(0xffffffff);
-
+  static const error = Colors.redAccent;
 
   static ColorScheme lightColorScheme = const ColorScheme.light(
       primary: primary,
@@ -19,8 +18,6 @@ class AppColors {
       surface: background,
       onSurface: onBackground,
       tertiary: grey,
-      onSecondary: lightGrey
-      
-      );
-
+      error: error,
+      onSecondary: lightGrey);
 }

@@ -81,6 +81,4 @@ class AppFonts {
         bodySmall: _blackbodySmall,
         labelLarge: _blacklabelLarge,
       );
-
-
 }

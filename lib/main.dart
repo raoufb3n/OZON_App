@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'OZONE App',
           theme: AppThemes.lightTheme,
-          home: const Registerscreen(),
+          home: Registerscreen(),
         );
       },
     );
