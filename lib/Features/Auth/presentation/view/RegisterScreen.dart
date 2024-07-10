@@ -14,84 +14,89 @@ class Registerscreen extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(top: 48, left: 16, right: 16),
-        child: Column(
-          children: [
-            Container(
-              height: 75.r,
-              width: 75.r,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(colors: [
-                    Theme.of(context).colorScheme.primary,
-                    Theme.of(context).colorScheme.primary.withOpacity(0.0)
-                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-              child: Image.asset(
-                Assets.cat,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 75.r,
+                width: 75.r,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.primary,
+                          Theme.of(context).colorScheme.primary.withOpacity(0.0)
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter)),
+                child: Image.asset(
+                  Assets.cat,
+                ),
               ),
-            ),
-            verticalBox(16),
-            Text(
-              'Inscription',
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
+              verticalBox(16),
+              Text(
+                'Inscription',
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+              ),
+              verticalBox(24),
+              Row(
+                children: [
+                  const Expanded(
+                    child: CustomInputTextField(
+                      label: 'Prénom',
+                      obsecure: false,
+                    ),
                   ),
-            ),
-            verticalBox(24),
-            Row(
-              children: [
-                const Expanded(
-                  child: CustomInputTextField(
-                    label: 'Prénom',
-                    obsecure: false,
+                  horizontalBox(8),
+                  const Expanded(
+                    child: CustomInputTextField(
+                      label: 'Nom',
+                      obsecure: false,
+                    ),
                   ),
-                ),
-                horizontalBox(8),
-                const Expanded(
-                  child: CustomInputTextField(
-                    label: 'Nom',
-                    obsecure: false,
+                ],
+              ),
+              verticalBox(16),
+              const CustomInputTextField(
+                label: 'Email',
+                obsecure: false,
+              ),
+              verticalBox(16),
+              const CustomInputTextField(label: 'Mot de passe', obsecure: true),
+              verticalBox(16),
+              const CustomInputTextField(label: 'Mot de passe', obsecure: true),
+              verticalBox(12),
+              CustomButton(
+                title: 'S’inscrire',
+                onPressed: () {},
+              ),
+              verticalBox(16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Vous n\'avez pas de compte ?',
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface),
                   ),
-                ),
-              ],
-            ),
-            verticalBox(16),
-            const CustomInputTextField(
-              label: 'Email',
-              obsecure: false,
-            ),
-            verticalBox(16),
-            const CustomInputTextField(label: 'Mot de passe', obsecure: true),
-            verticalBox(16),
-            const CustomInputTextField(label: 'Mot de passe', obsecure: true),
-            verticalBox(12),
-            CustomButton(
-              title: 'S’inscrire',
-              onPressed: () {},
-            ),
-            verticalBox(16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Vous n\'avez pas de compte ?',
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.onSurface),
-                ),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Inscription',
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.primary),
-                    )),
-              ],
-            ),
-            const Spacer(),
-            const SMAuthSection()
-          ],
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Inscription',
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary),
+                      )),
+                ],
+              ),
+              
+              Expanded(
+                flex: 0,
+                child: const SMAuthSection())
+            ],
+          ),
         ),
       )),
     );

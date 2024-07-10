@@ -14,77 +14,80 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(top: 48, left: 16, right: 16),
-        child: Column(
-          children: [
-            Container(
-              height: 75.r,
-              width: 75.r,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(colors: [
-                    Theme.of(context).colorScheme.primary,
-                    Theme.of(context).colorScheme.primary.withOpacity(0.0)
-                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-              child: Image.asset(
-                Assets.wavingHand,
-              ),
-            ),
-            verticalBox(16),
-            Text(
-              'Se connecter',
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-            ),
-            verticalBox(24),
-            const CustomInputTextField(
-              label: 'Email ou numéro de téléphone',
-              obsecure: false,
-            ),
-            verticalBox(16),
-            const CustomInputTextField(label: 'Mot de passe', obsecure: true),
-            verticalBox(8),
-            TextButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Vous avez oublié votre mot de passe ?',
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.tertiary),
-                    ),
-                  ],
-                )),
-            verticalBox(12),
-            CustomButton(
-              title: 'Connexion',
-              onPressed: () {},
-            ),
-            verticalBox(16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Vous n\'avez pas de compte ?',
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.onSurface),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 75.r,
+                width: 75.r,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.primary,
+                          Theme.of(context).colorScheme.primary.withOpacity(0.0)
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter)),
+                child: Image.asset(
+                  Assets.wavingHand,
                 ),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Inscription',
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.primary),
-                    )),
-              ],
-            ),
-            const Spacer(),
-            const SMAuthSection()
-          ],
+              ),
+              verticalBox(16),
+              Text(
+                'Se connecter',
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+              ),
+              verticalBox(24),
+              const CustomInputTextField(
+                label: 'Email ou numéro de téléphone',
+                obsecure: false,
+              ),
+              verticalBox(16),
+              const CustomInputTextField(label: 'Mot de passe', obsecure: true),
+              verticalBox(8),
+              TextButton(
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Vous avez oublié votre mot de passe ?',
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.tertiary),
+                      ),
+                    ],
+                  )),
+              verticalBox(12),
+              CustomButton(
+                title: 'Connexion',
+                onPressed: () {},
+              ),
+              verticalBox(16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Vous n\'avez pas de compte ?',
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Inscription',
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary),
+                      )),
+                ],
+              ),
+              verticalBox(48),
+              const SMAuthSection()
+            ],
+          ),
         ),
       )),
     );
@@ -93,7 +96,9 @@ class LoginScreen extends StatelessWidget {
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key, required this.title, this.onPressed,
+    super.key,
+    required this.title,
+    this.onPressed,
   });
   final String title;
   final Function()? onPressed;

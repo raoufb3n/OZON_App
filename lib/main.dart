@@ -1,5 +1,5 @@
 import 'package:flutterstarter/Core/index.dart';
-import 'Features/Search/Presetnation/view/SearchScreen.dart';
+import 'package:flutterstarter/Features/Events/Presentation/view/EventDetailsScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'OZONE App',
           theme: AppThemes.lightTheme,
-          home: const SearchScreen(),
+          home: const Eventdetailsscreen(),
         );
       },
     );

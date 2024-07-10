@@ -1,5 +1,3 @@
-
-
 import 'package:flutterstarter/Core/Helper/Extensions.dart';
 import 'package:flutterstarter/Core/index.dart';
 
@@ -11,7 +9,7 @@ class SMAuthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 52),
+      padding: const EdgeInsets.only(top: 52),
       child: Column(
         children: [
           Row(
