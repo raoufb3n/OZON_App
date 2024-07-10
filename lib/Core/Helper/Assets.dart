@@ -10,6 +10,7 @@ class Assets{
   static const String eye = 'assets/eye.png';
   static const String facebook = 'assets/Facebook.png';
   static const String googleIcon = 'assets/Google.png';
+  static const String arrow = 'assets/arrow.png';
   static const String cat = 'assets/cat.png';
   static const String home = 'assets/home.png';
   static const String heart = 'assets/heart.png';

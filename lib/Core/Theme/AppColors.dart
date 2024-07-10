@@ -19,7 +19,8 @@ class AppColors {
       surface: background,
       onSurface: onBackground,
       tertiary: grey,
-      onTertiary: lightGrey
+      onSecondary: lightGrey
+      
       );
 
 }
