@@ -36,6 +36,7 @@ dependencies:
     sdk: flutter
   flutter_otp_text_field: ^1.1.3+2
   flutter_screenutil: ^5.9.1
+  get_it: ^7.7.0
   google_fonts: ^6.2.1
   social_share: ^2.3.1
 
