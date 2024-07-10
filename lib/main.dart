@@ -1,5 +1,5 @@
 import 'package:flutterstarter/Core/index.dart';
-import 'package:flutterstarter/Features/Auth/presentation/view/ForgetPasswordPage.dart';
+import 'package:flutterstarter/Features/Auth/presentation/view/ConfirmationScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(390,844),
+      designSize: const Size(390, 844),
       minTextAdapt: true,
-      splitScreenMode: true,      
+      splitScreenMode: true,
       builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'OZONE App',
           theme: AppThemes.lightTheme,
-          home: const ForgetPasswordScreen(),        
+          home: const Confirmationscreen(),
         );
       },
     );
