@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutterstarter/Core/index.dart';
+import 'package:flutterstarter/Features/Auth/presentation/view/LoginScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,14 +11,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Starter',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(390,844),
+      minTextAdapt: true,
+      splitScreenMode: true,      
+      builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'OZONE App',
+          theme: AppThemes.lightTheme,
+          home: const LoginScreen(),        
+        );
+      },
     );
   }
 }
-
-

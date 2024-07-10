@@ -28,15 +28,13 @@ class AppThemes {
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           padding: const EdgeInsets.symmetric(
-            vertical: 16,
+            vertical: 14,
             horizontal: 48,
           ),
           backgroundColor: AppColors.secondary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(300),
           ),
         ),
       ));
-
-
 }
