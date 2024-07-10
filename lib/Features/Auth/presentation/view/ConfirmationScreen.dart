@@ -57,22 +57,14 @@ class Confirmationscreen extends StatelessWidget {
                   ),
 
               onCodeChanged: (String code) {
-                //handle validation or checks here
               },
-              //runs when every textfield is filled
+           
               onSubmit: (String verificationCode) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text("Verification Code"),
-                        content: Text('Code entered is $verificationCode'),
-                      );
-                    });
-              }, // end onSubmit
+  
+              }, 
             ),
             const Spacer(),
-            CustomButton(title: 'Envoyer', onPressed: () {}),
+            CustomButton(title: 'Continuer', onPressed: () {}),
             verticalBox(4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

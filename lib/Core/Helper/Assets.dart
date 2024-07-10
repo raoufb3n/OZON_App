@@ -23,6 +23,19 @@ class Assets{
   static const String tree = 'assets/tree.png';
   static const String treeEmoji = 'assets/treeEmoji.png';
   static const String wavingHand = 'assets/WavingHand.png';
+  static const String chat = 'assets/chat.png';
+  static const String checkMark = 'assets/checkMark.png';
+  static const String eventPicture = 'assets/eventPicture.png';
+  static const String share = 'assets/Share.png';
+  static const String joinEvnet = 'assets/joinEvent.png';
+  static const String comment = 'assets/comment.png';
+  static const String repost = 'assets/repost.png';
+  static const String sharePost = 'assets/sharePost.png';
+  static const String bookMark = 'assets/bookMark.png';
+  static const String settings = 'assets/settings.png';
+  static const String close = 'assets/close.png';
+  static const String clock = 'assets/clock.png';
+
 
 
 }

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutterstarter/Core/Theme/AppColors.dart';
-import 'package:flutterstarter/Core/Theme/AppFonts.dart';
+import 'package:flutterstarter/Core/index.dart';
 
 class AppThemes {
   AppThemes._();
@@ -36,5 +34,14 @@ class AppThemes {
             borderRadius: BorderRadius.circular(300),
           ),
         ),
-      ));
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+          backgroundColor: AppColors.white,
+          surfaceTintColor: AppColors.white,
+          labelTextStyle: WidgetStatePropertyAll(
+            AppFonts.lightThemeText.labelLarge,
+          ),
+          elevation: 4.0,
+          shadowColor: Colors.black.withOpacity(0.78),
+          height: 80.h));
 }
