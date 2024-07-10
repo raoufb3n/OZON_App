@@ -36,6 +36,7 @@ class DioHelper {
   static Dio init() {
     dio = Dio(
       BaseOptions(
+        baseUrl: 'https://squid-tech-back.onrender.com/api/',
         connectTimeout: const Duration(seconds: 60),
         receiveTimeout: const Duration(seconds: 60),
         receiveDataWhenStatusError: true,
