@@ -11,21 +11,22 @@ class StartedAppCubit extends Cubit<StartedAppState> {
   StartedAppCubit() : super(StartedAppState.initial());
   final ApiService apiService = ApiService();
   void onAppStarted() async {
+    emit(const StartedAppState.loading());
     try {
-      emit(const StartedAppState.loading());
-
       final token = await AuthServicesRepo.getToken();
       if (token != null) {
-        final user = await AuthServicesRepo(apiService).getUser(token);
+        final user = await AuthServicesRepo().getUser(token);
         if (user != null) {
           emit(Authenticated(user));
         } else {
           emit(const Unothanticated());
         }
-      }
-      emit(const Unothanticated());
+      } else {emit(const Unothanticated());}
+      
+    } on HandleError catch (e) {
+      emit(StartedAppState.error(e.toString()));
     } catch (e) {
-      HandleError.handle(e.toString());
+      emit(StartedAppState.error(e.toString()));
     }
   }
 }

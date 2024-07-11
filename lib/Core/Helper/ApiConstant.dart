@@ -20,4 +20,10 @@ abstract class Endpoints {
   static const String register = "/register";
   static const String login = "/login";
   static const String user = "/user";
+  static const String events = '/events';
+  static const String participateinEvent = '/participate';
+  static const String eventLocation = 'events/location';
+  static const String shareEvent = '/share';
+  static const String eventUsers = '/events/users';
+  static const String eventValidation = '/validate';
 }

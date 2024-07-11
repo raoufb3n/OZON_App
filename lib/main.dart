@@ -6,7 +6,10 @@ import 'package:flutterstarter/Features/Auth/presentation/view/RegisterScreen.da
 import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/started_app_cubit.dart';
-import 'package:flutterstarter/Features/Home/presentation/view/HomeScreen.dart';
+import 'package:flutterstarter/Features/Events/Presentation/view/EventScreen.dart';
+import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/event_cubit.dart';
+import 'package:flutterstarter/Features/Home/presentation/view/Layout.dart';
+import 'package:flutterstarter/Features/Home/viewModel/cubit/layout_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +27,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(),
         ),
-        BlocProvider(create: (context) => StartedAppCubit()..onAppStarted())
+        BlocProvider(
+          create: (context) => StartedAppCubit()..onAppStarted(),
+        ),
+        BlocProvider(create: (context) => EventCubit()),
+        BlocProvider(create: (context) => LayoutCubit())
       ],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
@@ -46,6 +53,7 @@ class MyApp extends StatelessWidget {
                     ),
                   );
                 }, loading: () {
+                  
                   return const Scaffold(
                     body: Center(
                       child: CircularProgressIndicator(),
@@ -58,7 +66,7 @@ class MyApp extends StatelessWidget {
                     ),
                   );
                 }, authenticated: (User? user) {
-                  return const Homescreen();
+                  return const LayoutScreen();
                 }, unothanticated: () {
                   return const Registerscreen();
                 });

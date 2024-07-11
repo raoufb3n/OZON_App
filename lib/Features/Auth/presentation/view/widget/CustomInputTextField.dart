@@ -12,6 +12,8 @@ class CustomInputTextField extends StatelessWidget {
     this.onSubmitted,
     this.errText,
     this.focusNode,
+    this.onTap,
+    required this.isPass,
   });
   final String label;
   final bool obsecure;
@@ -22,6 +24,8 @@ class CustomInputTextField extends StatelessWidget {
   final Function(String)? onSubmitted;
   final String? errText;
   final FocusNode? focusNode;
+  final Function()? onTap;
+  final bool isPass;
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +58,14 @@ class CustomInputTextField extends StatelessWidget {
                 minHeight: 24.r,
                 maxHeight: 24.r,
               ),
-              suffixIcon: obsecure
-                  ? Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: Image.asset(
-                        Assets.eye,
+              suffixIcon: isPass
+                  ? InkWell(
+                      onTap: onTap,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: Image.asset(
+                          Assets.eye,
+                        ),
                       ),
                     )
                   : null,

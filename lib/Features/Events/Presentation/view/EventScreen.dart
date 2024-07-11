@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterstarter/Core/Helper/CustomBox.dart';
+import 'package:flutterstarter/Features/Events/Presentation/view/widgets/eEventShimmerWidget.dart';
+import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/event_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/view/widgets/EventCard.dart';
 
 class EventsScren extends StatelessWidget {
@@ -28,7 +31,7 @@ class EventsScren extends StatelessWidget {
                   .copyWith(color: Theme.of(context).colorScheme.onSurface),
             ),
             verticalBox(12),
-            const EventCard(),
+            /*const EventCard(),*/
             verticalBox(24),
             Text(
               'Évènements similaires',
@@ -38,7 +41,23 @@ class EventsScren extends StatelessWidget {
                   .copyWith(color: Theme.of(context).colorScheme.onSurface),
             ),
             verticalBox(12),
-            const EventCard(),
+            BlocBuilder<EventCubit, EventState>(
+              builder: (context, state) {
+                return state.when(initial: () {
+                  return SizedBox.shrink();
+                }, loading: () {
+                  return Eeventshimmerwidget();
+                }, loaded: (event) {
+                  return EventCard(
+                    title: event.data!.name!,
+                    participants:event.data!.participations! ,
+                    start: event.data!.start!,
+                  );
+                }, error: (message) {
+                  return Eeventshimmerwidget();
+                });
+              },
+            ),
             verticalBox(24),
             Text(
               'Évènements disponibles',
@@ -48,7 +67,7 @@ class EventsScren extends StatelessWidget {
                   .copyWith(color: Theme.of(context).colorScheme.onSurface),
             ),
             verticalBox(12),
-            const EventCard(),
+            /*const EventCard(),*/
           ],
         ),
       ),

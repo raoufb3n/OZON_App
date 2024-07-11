@@ -1,5 +1,3 @@
-
-
 class Routes {
   Routes._();
 
@@ -16,5 +14,4 @@ class Routes {
   static const String userProfile = 'userProfile';
   static const String editProfile = 'editProfile';
   static const String impact = 'impact';
-  
 }

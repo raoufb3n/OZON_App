@@ -9,8 +9,7 @@ import 'package:logger/logger.dart';
 import '../../../../../Core/Helper/ApiConstant.dart';
 
 class AuthServicesRepo implements Authservices {
-  final ApiService apiService;
-  AuthServicesRepo(this.apiService);
+  final ApiService apiService=ApiService();
   final Logger logger = Logger();
   AndroidOptions getAndroidOptions() => const AndroidOptions(
         encryptedSharedPreferences: true,

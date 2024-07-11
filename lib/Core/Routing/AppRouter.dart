@@ -1,4 +1,3 @@
-
 import 'package:flutterstarter/Core/Routing/Routes.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/LoginScreen.dart';
@@ -49,4 +48,3 @@ class AppRouter {
             ));
   }
 }
-

@@ -1,50 +1,87 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterstarter/Features/Home/viewModel/cubit/layout_cubit.dart';
+
 import '../../../../Core/index.dart';
 
-class Homescreen extends StatelessWidget {
-  const Homescreen({super.key});
+class LayoutScreen extends StatelessWidget {
+  const LayoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(
-        leadingWidth: 120.w,
-        leading: Container(
-          margin: const EdgeInsets.only(left: 16),
-          child: Image.asset(
-            Assets.logo,
+    return BlocBuilder<LayoutCubit, LayoutState>(
+      builder: (context, state) {
+        final cubit = LayoutCubit.get(context);
+        return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          body: cubit.pages[cubit.currentIndex],
+          bottomNavigationBar: NavigationBar(
+            backgroundColor: Theme.of(context).colorScheme.onPrimary,
+            elevation: 4.0,
+            selectedIndex: cubit.currentIndex,
+            onDestinationSelected: (value) {
+              cubit.changeLayout(value);
+            
+            },
+            shadowColor: Colors.black.withOpacity(0.5),
+            indicatorColor: Colors.transparent,
+            labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+            destinations: [
+              NavigationDestination(
+                icon: Image.asset(
+                  Assets.home,
+                  height: 24.h,
+                  color: cubit.currentIndex ==0 ?
+                  Theme.of(context).colorScheme.primary :
+                  Theme.of(context).colorScheme.onSecondary
+                  ,
+                ),
+                label: 'Accueil',
+              ),
+              NavigationDestination(
+                icon: Image.asset(
+                  Assets.search,
+                  height: 24.h,
+                  color: cubit.currentIndex ==1 ?
+                  Theme.of(context).colorScheme.primary :
+                  Theme.of(context).colorScheme.onSecondary
+                  ,
+                ),
+                label: 'Recherche',
+              ),
+              NavigationDestination(
+                icon: CircleAvatar(
+                  radius: 28,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: Image.asset(Assets.add, height: 20.h),
+                ),
+                label: '',
+              ),
+              NavigationDestination(
+                icon: Image.asset(
+                  Assets.tree,
+                  height: 24.h,
+                  color: cubit.currentIndex ==3 ?
+                  Theme.of(context).colorScheme.primary :
+                  Theme.of(context).colorScheme.onSecondary
+                  ,                  
+                ),
+                label: 'Accueil',
+              ),
+              NavigationDestination(
+                icon: Image.asset(
+                  Assets.user,
+                  color: cubit.currentIndex ==4 ?
+                  Theme.of(context).colorScheme.primary :
+                  Theme.of(context).colorScheme.onSecondary
+                  ,                  
+                  height: 24.h,
+                ),
+                label: 'Accueil',
+              ),
+            ],
           ),
-        ),
-        actions: [
-          Image.asset(Assets.notification, height: 24.w),
-          horizontalBox(16),
-          Container(
-              margin: const EdgeInsets.only(right: 16),
-              child: Image.asset(Assets.chat, height: 24.w)),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          left: 16,
-          right: 16,
-          top: 32,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Évènements',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            verticalBox(16),
-            /*const EventCard(),*/
-            verticalBox(16),
-            const PostWidget(),
-            verticalBox(16),
-          ],
-        ),
-      ),
-
+        );
+      },
     );
   }
 }
