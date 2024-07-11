@@ -13,17 +13,21 @@ class StartedAppCubit extends Cubit<StartedAppState> {
   void onAppStarted() async {
     emit(const StartedAppState.loading());
     try {
-      final token = await AuthServicesRepo.readData('x-auth-token');
+      final token = await AuthServicesRepo.getToken();
       if (token != null) {
-        final user = await AuthServicesRepo(apiService).getUser(token);
+        final user = await AuthServicesRepo().getUser(token);
         if (user != null) {
           emit(Authenticated(user));
         } else {
           emit(const Unothanticated());
         }
+      } else {
+        emit(const Unothanticated());
       }
+    } on HandleError catch (e) {
+      emit(StartedAppState.error(e.toString()));
     } catch (e) {
-      HandleError.handle(e.toString());
+      emit(StartedAppState.error(e.toString()));
     }
   }
 }

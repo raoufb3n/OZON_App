@@ -9,17 +9,6 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: CircleAvatar(
-                radius: 28,
-                backgroundColor:
-                    Theme.of(context).colorScheme.onSecondary.withOpacity(0.35),
-                child: Image.asset(
-                  Assets.close,
-                  height: 24,
-                )),
-            onPressed: () {},
-          ),
           centerTitle: true,
           title: Text(
             'Rechercher',

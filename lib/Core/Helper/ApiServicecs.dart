@@ -12,13 +12,17 @@ class ApiService {
   }
 
   Future<Response> post(
-      {required String endPoint, Map<String, dynamic>? query}) async {
+      {required String endPoint,
+      Map<String, dynamic>? query,
+      String? token}) async {
     final response = await DioHelper.postData(url: endPoint, data: query!);
     return response;
   }
 
   Future<Response> put(
-      {required String endPoint, Map<String, dynamic>? query}) async {
+      {required String endPoint,
+      Map<String, dynamic>? query,
+      String? token}) async {
     final response = await DioHelper.putData(url: endPoint, data: query);
     return response;
   }

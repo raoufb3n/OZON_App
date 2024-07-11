@@ -9,8 +9,7 @@ import 'package:logger/logger.dart';
 import '../../../../../Core/Helper/ApiConstant.dart';
 
 class AuthServicesRepo implements Authservices {
-  final ApiService apiService;
-  AuthServicesRepo(this.apiService);
+  final ApiService apiService = ApiService();
   final Logger logger = Logger();
   AndroidOptions getAndroidOptions() => const AndroidOptions(
         encryptedSharedPreferences: true,
@@ -38,9 +37,9 @@ class AuthServicesRepo implements Authservices {
     await _secureStorage.write(key: 'x-auth-token', value: token);
   }
 
-  static Future<String?> readData(token) async {
-    String? token = await _secureStorage.read(key: 'x-auth-token');
-    return token!;
+  static Future<String?> getToken() async {
+    final token = await _secureStorage.read(key: 'x-auth-token');
+    return token;
   }
 
   @override
