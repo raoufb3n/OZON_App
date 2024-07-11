@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutterstarter/Core/Helper/Extensions.dart';
-
 import '../../../../Core/index.dart';
 import 'widgets/EventCard.dart';
 
@@ -51,8 +48,7 @@ class Homescreen extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 4.0,
-
-      selectedIndex: 0,
+        selectedIndex: 0,
         shadowColor: Colors.black.withOpacity(0.5),
         indicatorColor: Colors.transparent,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
@@ -93,7 +89,6 @@ class Homescreen extends StatelessWidget {
             ),
             label: 'Accueil',
           ),
-          
         ],
       ),
     );

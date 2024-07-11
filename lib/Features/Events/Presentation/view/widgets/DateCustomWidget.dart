@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutterstarter/Core/index.dart';
 
 class DateCustomWidget extends StatelessWidget {
@@ -23,14 +20,18 @@ class DateCustomWidget extends StatelessWidget {
           children: [
             Text(
               'Lundi, 21 Juillet 2024',
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: Theme.of(context).colorScheme.tertiary),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: Theme.of(context).colorScheme.tertiary),
             ),
             verticalBox(4),
             Text(
               '14:00 · 20:00 AM GMT +8',
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onSecondary),
+              style: Theme.of(context)
+                  .textTheme
+                  .labelLarge!
+                  .copyWith(color: Theme.of(context).colorScheme.onSecondary),
             )
           ],
         )
@@ -38,4 +39,3 @@ class DateCustomWidget extends StatelessWidget {
     );
   }
 }
-

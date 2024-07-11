@@ -45,7 +45,7 @@ class SearchInput extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide:const BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.transparent,
               )),
           focusedBorder: OutlineInputBorder(

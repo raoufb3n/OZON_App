@@ -55,13 +55,8 @@ class Confirmationscreen extends StatelessWidget {
               textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
-
-              onCodeChanged: (String code) {
-              },
-           
-              onSubmit: (String verificationCode) {
-  
-              }, 
+              onCodeChanged: (String code) {},
+              onSubmit: (String verificationCode) {},
             ),
             const Spacer(),
             CustomButton(title: 'Continuer', onPressed: () {}),
