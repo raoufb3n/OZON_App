@@ -3,6 +3,7 @@ import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutterstarter/Core/Helper/Extensions.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Core/ui/Animation.dart';
+import 'package:flutterstarter/Features/Auth/presentation/view/RegisterScreen.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/widget/SMAuthSection.dart';
 import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/auth_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/view/HomeScreen.dart';
@@ -109,8 +110,11 @@ class LoginScreen extends StatelessWidget {
                              return CustomButton(
                       title: 'Connexion',
                       onPressed: () {
+                        if (formKey.currentState!.validate()) {
                         context.read<AuthCubit>().login(emailController.text,
-                         passwordController.text);
+                         passwordController.text);                          
+                        }
+
                       },
                     );
                         },
@@ -150,7 +154,10 @@ class LoginScreen extends StatelessWidget {
                           color: Theme.of(context).colorScheme.onSurface),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushReplacement(FadeSlidePageTransition(
+                              page: const Registerscreen()));
+                        },
                         child: Text(
                           'Inscription',
                           style: Theme.of(context)

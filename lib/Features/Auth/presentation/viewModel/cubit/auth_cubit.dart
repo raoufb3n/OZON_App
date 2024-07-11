@@ -19,7 +19,7 @@ class AuthCubit extends Cubit<AuthState> {
       final user = await AuthServicesRepo(apiService)
           .signIn(email, password, name, lastName);
       AuthServicesRepo.persistData(user.token);
-      print(AuthServicesRepo.readData('x-auth-token'));
+      print(AuthServicesRepo.getToken());
 
       emit(AuthState.loaded());
     } on HandleError catch (e) {

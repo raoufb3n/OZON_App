@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Core/ui/Animation.dart';
+import 'package:flutterstarter/Features/Auth/presentation/view/LoginScreen.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/widget/SMAuthSection.dart';
 import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/auth_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/view/HomeScreen.dart';
@@ -206,7 +207,10 @@ class _RegisterscreenState extends State<Registerscreen> {
                           color: Theme.of(context).colorScheme.onSurface),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushReplacement(FadeSlidePageTransition(
+                              page: const LoginScreen()));
+                        },
                         child: Text(
                           'Inscription',
                           style: Theme.of(context)

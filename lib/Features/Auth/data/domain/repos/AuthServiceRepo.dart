@@ -38,9 +38,9 @@ class AuthServicesRepo implements Authservices {
     await _secureStorage.write(key: 'x-auth-token', value: token);
   }
 
-  static Future<String?> readData(token) async {
-    String? token = await _secureStorage.read(key: 'x-auth-token');
-    return token!;
+  static Future<String?> getToken() async {
+    final token = await _secureStorage.read(key: 'x-auth-token');
+    return token;
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutterstarter/Core/Helper/DioHelper.dart';
+import 'package:flutterstarter/Core/Routing/AppRouter.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Features/Auth/data/model/authusermodel/user.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/RegisterScreen.dart';
@@ -34,6 +35,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'OZONE App',
             theme: AppThemes.lightTheme,
+            onGenerateRoute: AppRouter().generateRoute,
+            onUnknownRoute: AppRouter().onUnknownRoute,
             home: BlocBuilder<StartedAppCubit, StartedAppState>(
               builder: (context, state) {
                 return state.when(initial: () {
