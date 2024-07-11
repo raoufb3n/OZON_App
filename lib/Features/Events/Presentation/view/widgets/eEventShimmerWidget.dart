@@ -23,51 +23,62 @@ class Eeventshimmerwidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Shimmer.fromColors(
-                  baseColor: Theme.of(context).colorScheme.tertiary,
-                  highlightColor: Theme.of(context).colorScheme.onSecondary,
-                  child: Text(
-                    'Lundi, 21 Juillet 2024 · 14:00',
-                    style: Theme.of(context).textTheme.labelLarge,
+                  baseColor: Theme.of(context).colorScheme.onPrimary,
+                  highlightColor: Theme.of(context)
+                      .colorScheme
+                      .onSecondary
+                      .withOpacity(0.45),
+                  child: Container(
+                    width: 120,
+                    height: 15,
+                    color: Theme.of(context).colorScheme.onSecondary,
                   ),
                 ),
               ),
               SizedBox(
                 width: 160.w,
                 child: Shimmer.fromColors(
-                  baseColor: Theme.of(context).colorScheme.tertiary,
-                  highlightColor: Theme.of(context).colorScheme.onSecondary,                  
-                  child: Text(
-                    'Plantation d’arbres pour créer une forêt',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(color: Theme.of(context).colorScheme.primary),
-                    maxLines: 2,
-                  ),
-                ),
+                    baseColor: Theme.of(context).colorScheme.onPrimary,
+                    highlightColor: Theme.of(context)
+                        .colorScheme
+                        .onSecondary
+                        .withOpacity(0.45),
+                    child: Container(
+                      width: 140,
+                      height: 30,
+                      color: Theme.of(context).colorScheme.onSecondary,
+                    )),
               ),
               verticalBox(8),
               Row(
                 children: [
                   Shimmer.fromColors(
-                                      baseColor: Theme.of(context).colorScheme.tertiary,
-                  highlightColor: Theme.of(context).colorScheme.onSecondary,
-                    child: Image.asset(
-                      Assets.checkMark,
-                      height: 20,
-                    ),
-                  ),
+                      baseColor: Theme.of(context).colorScheme.onPrimary,
+                      highlightColor: Theme.of(context)
+                          .colorScheme
+                          .onSecondary
+                          .withOpacity(0.45),
+                      child: Container(
+                        width: 24,
+                        height: 24,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.onSecondary,
+                          shape: BoxShape.circle,
+                        ),
+                      )),
                   horizontalBox(4),
                   Shimmer.fromColors(
-                                      baseColor: Theme.of(context).colorScheme.tertiary,
-                  highlightColor: Theme.of(context).colorScheme.onSecondary,
-                    child: Text(
-                      '81 présents · Évènement disponible',
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          fontSize: 10.sp,
-                          color: Theme.of(context).colorScheme.onSecondary),
+                    baseColor: Theme.of(context).colorScheme.onPrimary,
+                    highlightColor: Theme.of(context)
+                        .colorScheme
+                        .onSecondary
+                        .withOpacity(0.45),
+                    child: Container(
+                      width: 130,
+                      height: 15,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
-                  ),
+                  )
                 ],
               )
             ],
@@ -75,8 +86,9 @@ class Eeventshimmerwidget extends StatelessWidget {
           const Spacer(),
           SizedBox(
             child: Shimmer.fromColors(
-                                baseColor: Theme.of(context).colorScheme.tertiary,
-                highlightColor: Theme.of(context).colorScheme.onSecondary,
+              baseColor: Theme.of(context).colorScheme.onPrimary,
+              highlightColor:
+                  Theme.of(context).colorScheme.onSecondary.withOpacity(0.45),
               child: Image.asset(
                 Assets.eventPicture,
                 height: 120.h,

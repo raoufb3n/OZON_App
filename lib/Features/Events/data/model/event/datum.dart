@@ -3,10 +3,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'organizer.dart';
 
-part 'data.g.dart';
+part 'datum.g.dart';
 
 @JsonSerializable()
-class Data {
+class Datum {
   int? id;
   String? name;
   String? description;
@@ -24,8 +24,10 @@ class Data {
   DateTime? createdAt;
   List<dynamic>? images;
   int? participations;
+  @JsonKey(name: 'user_is_participating')
+  bool? userIsParticipating;
 
-  Data({
+  Datum({
     this.id,
     this.name,
     this.description,
@@ -40,18 +42,19 @@ class Data {
     this.createdAt,
     this.images,
     this.participations,
+    this.userIsParticipating,
   });
 
   @override
   String toString() {
-    return 'Data(id: $id, name: $name, description: $description, address: $address, longitude: $longitude, latitude: $latitude, start: $start, organizer: $organizer, eventType: $eventType, limit: $limit, eventTypeId: $eventTypeId, createdAt: $createdAt, images: $images, participations: $participations)';
+    return 'Datum(id: $id, name: $name, description: $description, address: $address, longitude: $longitude, latitude: $latitude, start: $start, organizer: $organizer, eventType: $eventType, limit: $limit, eventTypeId: $eventTypeId, createdAt: $createdAt, images: $images, participations: $participations, userIsParticipating: $userIsParticipating)';
   }
 
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  factory Datum.fromJson(Map<String, dynamic> json) => _$DatumFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  Map<String, dynamic> toJson() => _$DatumToJson(this);
 
-  Data copyWith({
+  Datum copyWith({
     int? id,
     String? name,
     String? description,
@@ -66,8 +69,9 @@ class Data {
     DateTime? createdAt,
     List<dynamic>? images,
     int? participations,
+    bool? userIsParticipating,
   }) {
-    return Data(
+    return Datum(
       id: id ?? this.id,
       name: name ?? this.name,
       description: description ?? this.description,
@@ -82,13 +86,14 @@ class Data {
       createdAt: createdAt ?? this.createdAt,
       images: images ?? this.images,
       participations: participations ?? this.participations,
+      userIsParticipating: userIsParticipating ?? this.userIsParticipating,
     );
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! Data) return false;
+    if (other is! Datum) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }
@@ -108,5 +113,6 @@ class Data {
       eventTypeId.hashCode ^
       createdAt.hashCode ^
       images.hashCode ^
-      participations.hashCode;
+      participations.hashCode ^
+      userIsParticipating.hashCode;
 }

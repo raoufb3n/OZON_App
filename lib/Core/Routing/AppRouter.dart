@@ -19,13 +19,11 @@ class AppRouter {
       case Routes.search:
         return MaterialPageRoute(builder: (_) => const SearchScreen());
       case Routes.events:
-        return MaterialPageRoute(builder: (_) => const EventsScren());
+        return MaterialPageRoute(builder: (_) => EventsScren());
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.register:
         return MaterialPageRoute(builder: (_) => const Registerscreen());
-      case Routes.eventDetails:
-        return MaterialPageRoute(builder: (_) => const Eventdetailsscreen());
 
       default:
         return MaterialPageRoute(

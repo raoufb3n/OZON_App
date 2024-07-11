@@ -21,8 +21,9 @@ class StartedAppCubit extends Cubit<StartedAppState> {
         } else {
           emit(const Unothanticated());
         }
-      } else {emit(const Unothanticated());}
-      
+      } else {
+        emit(const Unothanticated());
+      }
     } on HandleError catch (e) {
       emit(StartedAppState.error(e.toString()));
     } catch (e) {

@@ -7,9 +7,9 @@ part of 'event.dart';
 // **************************************************************************
 
 Event _$EventFromJson(Map<String, dynamic> json) => Event(
-      data: json['data'] == null
-          ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{

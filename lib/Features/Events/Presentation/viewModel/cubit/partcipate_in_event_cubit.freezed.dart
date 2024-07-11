@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'event_cubit.dart';
+part of 'partcipate_in_event_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$EventState {
+mixin _$PartcipateInEventState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Datum> events) loaded,
+    required TResult Function(String message) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$EventState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Datum> events)? loaded,
+    TResult? Function(String message)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$EventState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Datum> events)? loaded,
+    TResult Function(String message)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,17 @@ mixin _$EventState {
 }
 
 /// @nodoc
-abstract class $EventStateCopyWith<$Res> {
-  factory $EventStateCopyWith(
-          EventState value, $Res Function(EventState) then) =
-      _$EventStateCopyWithImpl<$Res, EventState>;
+abstract class $PartcipateInEventStateCopyWith<$Res> {
+  factory $PartcipateInEventStateCopyWith(PartcipateInEventState value,
+          $Res Function(PartcipateInEventState) then) =
+      _$PartcipateInEventStateCopyWithImpl<$Res, PartcipateInEventState>;
 }
 
 /// @nodoc
-class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
-    implements $EventStateCopyWith<$Res> {
-  _$EventStateCopyWithImpl(this._value, this._then);
+class _$PartcipateInEventStateCopyWithImpl<$Res,
+        $Val extends PartcipateInEventState>
+    implements $PartcipateInEventStateCopyWith<$Res> {
+  _$PartcipateInEventStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +96,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$EventStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$PartcipateInEventStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -109,7 +110,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'EventState.initial()';
+    return 'PartcipateInEventState.initial()';
   }
 
   @override
@@ -126,7 +127,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Datum> events) loaded,
+    required TResult Function(String message) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -137,7 +138,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Datum> events)? loaded,
+    TResult? Function(String message)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -148,7 +149,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Datum> events)? loaded,
+    TResult Function(String message)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -196,7 +197,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements EventState {
+abstract class _Initial implements PartcipateInEventState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -209,7 +210,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$EventStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$PartcipateInEventStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -223,7 +224,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'EventState.loading()';
+    return 'PartcipateInEventState.loading()';
   }
 
   @override
@@ -240,7 +241,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Datum> events) loaded,
+    required TResult Function(String message) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -251,7 +252,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Datum> events)? loaded,
+    TResult? Function(String message)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -262,7 +263,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Datum> events)? loaded,
+    TResult Function(String message)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -310,7 +311,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements EventState {
+abstract class _Loading implements PartcipateInEventState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -320,12 +321,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Datum> events});
+  $Res call({String message});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$EventStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$PartcipateInEventStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -334,13 +335,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = null,
+    Object? message = null,
   }) {
     return _then(_$LoadedImpl(
-      null == events
-          ? _value._events
-          : events // ignore: cast_nullable_to_non_nullable
-              as List<Datum>,
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -348,19 +349,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<Datum> events) : _events = events;
+  const _$LoadedImpl(this.message);
 
-  final List<Datum> _events;
   @override
-  List<Datum> get events {
-    if (_events is EqualUnmodifiableListView) return _events;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_events);
-  }
+  final String message;
 
   @override
   String toString() {
-    return 'EventState.loaded(events: $events)';
+    return 'PartcipateInEventState.loaded(message: $message)';
   }
 
   @override
@@ -368,12 +364,11 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._events, _events));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_events));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -386,10 +381,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Datum> events) loaded,
+    required TResult Function(String message) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(events);
+    return loaded(message);
   }
 
   @override
@@ -397,10 +392,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Datum> events)? loaded,
+    TResult? Function(String message)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(events);
+    return loaded?.call(message);
   }
 
   @override
@@ -408,12 +403,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Datum> events)? loaded,
+    TResult Function(String message)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(events);
+      return loaded(message);
     }
     return orElse();
   }
@@ -456,10 +451,10 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements EventState {
-  const factory _Loaded(final List<Datum> events) = _$LoadedImpl;
+abstract class _Loaded implements PartcipateInEventState {
+  const factory _Loaded(final String message) = _$LoadedImpl;
 
-  List<Datum> get events;
+  String get message;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -476,7 +471,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$EventStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$PartcipateInEventStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -506,7 +501,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'EventState.error(message: $message)';
+    return 'PartcipateInEventState.error(message: $message)';
   }
 
   @override
@@ -531,7 +526,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Datum> events) loaded,
+    required TResult Function(String message) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -542,7 +537,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Datum> events)? loaded,
+    TResult? Function(String message)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -553,7 +548,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Datum> events)? loaded,
+    TResult Function(String message)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -601,7 +596,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements EventState {
+abstract class _Error implements PartcipateInEventState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

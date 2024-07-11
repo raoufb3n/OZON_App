@@ -1,13 +1,13 @@
 import 'package:collection/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'datum.dart';
 
 part 'event.g.dart';
 
 @JsonSerializable()
 class Event {
-  Data? data;
+  List<Datum>? data;
 
   Event({this.data});
 
@@ -19,7 +19,7 @@ class Event {
   Map<String, dynamic> toJson() => _$EventToJson(this);
 
   Event copyWith({
-    Data? data,
+    List<Datum>? data,
   }) {
     return Event(
       data: data ?? this.data,

@@ -49,7 +49,7 @@ class _RegisterscreenState extends State<Registerscreen> {
         padding: const EdgeInsets.only(top: 48, left: 16, right: 16),
         child: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
-                       state.maybeWhen(
+            state.maybeWhen(
               orElse: () {},
               loaded: () {
                 showModalBottomSheet(
@@ -57,7 +57,6 @@ class _RegisterscreenState extends State<Registerscreen> {
                     constraints: BoxConstraints(
                       minHeight: 200.r,
                       maxHeight: 200.r,
-                    
                     ),
                     builder: (context) {
                       return Padding(

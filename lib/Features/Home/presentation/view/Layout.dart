@@ -20,7 +20,6 @@ class LayoutScreen extends StatelessWidget {
             selectedIndex: cubit.currentIndex,
             onDestinationSelected: (value) {
               cubit.changeLayout(value);
-            
             },
             shadowColor: Colors.black.withOpacity(0.5),
             indicatorColor: Colors.transparent,
@@ -30,10 +29,9 @@ class LayoutScreen extends StatelessWidget {
                 icon: Image.asset(
                   Assets.home,
                   height: 24.h,
-                  color: cubit.currentIndex ==0 ?
-                  Theme.of(context).colorScheme.primary :
-                  Theme.of(context).colorScheme.onSecondary
-                  ,
+                  color: cubit.currentIndex == 0
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSecondary,
                 ),
                 label: 'Accueil',
               ),
@@ -41,10 +39,9 @@ class LayoutScreen extends StatelessWidget {
                 icon: Image.asset(
                   Assets.search,
                   height: 24.h,
-                  color: cubit.currentIndex ==1 ?
-                  Theme.of(context).colorScheme.primary :
-                  Theme.of(context).colorScheme.onSecondary
-                  ,
+                  color: cubit.currentIndex == 1
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSecondary,
                 ),
                 label: 'Recherche',
               ),
@@ -60,20 +57,18 @@ class LayoutScreen extends StatelessWidget {
                 icon: Image.asset(
                   Assets.tree,
                   height: 24.h,
-                  color: cubit.currentIndex ==3 ?
-                  Theme.of(context).colorScheme.primary :
-                  Theme.of(context).colorScheme.onSecondary
-                  ,                  
+                  color: cubit.currentIndex == 3
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSecondary,
                 ),
                 label: 'Accueil',
               ),
               NavigationDestination(
                 icon: Image.asset(
                   Assets.user,
-                  color: cubit.currentIndex ==4 ?
-                  Theme.of(context).colorScheme.primary :
-                  Theme.of(context).colorScheme.onSecondary
-                  ,                  
+                  color: cubit.currentIndex == 4
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSecondary,
                   height: 24.h,
                 ),
                 label: 'Accueil',

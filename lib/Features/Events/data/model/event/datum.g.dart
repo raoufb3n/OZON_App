@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'data.dart';
+part of 'datum.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       description: json['description'] as String?,
@@ -25,9 +25,10 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
           : DateTime.parse(json['created_at'] as String),
       images: json['images'] as List<dynamic>?,
       participations: (json['participations'] as num?)?.toInt(),
+      userIsParticipating: json['user_is_participating'] as bool?,
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$DatumToJson(Datum instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
@@ -42,4 +43,5 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'created_at': instance.createdAt?.toIso8601String(),
       'images': instance.images,
       'participations': instance.participations,
+      'user_is_participating': instance.userIsParticipating,
     };

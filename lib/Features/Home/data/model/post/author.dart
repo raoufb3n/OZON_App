@@ -1,39 +1,43 @@
 import 'package:collection/collection.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import 'grade.dart';
 
-part 'organizer.g.dart';
-
-@JsonSerializable()
-class Organizer {
+class Author {
   String? name;
-  @JsonKey(name: 'last_name')
   String? lastName;
-  @JsonKey(name: 'profile_pic')
   String? profilePic;
   Grade? grade;
 
-  Organizer({this.name, this.lastName, this.profilePic, this.grade});
+  Author({this.name, this.lastName, this.profilePic, this.grade});
 
   @override
   String toString() {
-    return 'Organizer(name: $name, lastName: $lastName, profilePic: $profilePic, grade: $grade)';
+    return 'Author(name: $name, lastName: $lastName, profilePic: $profilePic, grade: $grade)';
   }
 
-  factory Organizer.fromJson(Map<String, dynamic> json) {
-    return _$OrganizerFromJson(json);
-  }
+  factory Author.fromJson(Map<String, dynamic> json) => Author(
+        name: json['name'] as String?,
+        lastName: json['last_name'] as String?,
+        profilePic: json['profile_pic'] as String?,
+        grade: json['grade'] == null
+            ? null
+            : Grade.fromJson(json['grade'] as Map<String, dynamic>),
+      );
 
-  Map<String, dynamic> toJson() => _$OrganizerToJson(this);
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'last_name': lastName,
+        'profile_pic': profilePic,
+        'grade': grade?.toJson(),
+      };
 
-  Organizer copyWith({
+  Author copyWith({
     String? name,
     String? lastName,
     String? profilePic,
     Grade? grade,
   }) {
-    return Organizer(
+    return Author(
       name: name ?? this.name,
       lastName: lastName ?? this.lastName,
       profilePic: profilePic ?? this.profilePic,
@@ -44,7 +48,7 @@ class Organizer {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! Organizer) return false;
+    if (other is! Author) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }

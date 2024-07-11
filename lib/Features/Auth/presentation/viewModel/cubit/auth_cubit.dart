@@ -13,8 +13,8 @@ class AuthCubit extends Cubit<AuthState> {
       String email, String password, String name, String lastName) async {
     emit(const AuthState.loading());
     try {
-      final user = await AuthServicesRepo()
-          .signIn(email, password, name, lastName);
+      final user =
+          await AuthServicesRepo().signIn(email, password, name, lastName);
       AuthServicesRepo.persistData(user.token);
 
       emit(AuthState.loaded());
