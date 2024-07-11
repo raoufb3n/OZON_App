@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutterstarter/Core/Helper/Extensions.dart';
-
 import '../../../../Core/index.dart';
 import 'widgets/EventCard.dart';
 

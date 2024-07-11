@@ -96,7 +96,6 @@ class CustomSimpleInput extends StatelessWidget {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       onChanged: (value) {},
-      validator: (value) {},
       style: Theme.of(context).textTheme.labelLarge!.copyWith(
             color: Theme.of(context).colorScheme.onSurface,
           ),

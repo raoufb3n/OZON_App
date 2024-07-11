@@ -15,7 +15,7 @@ class User {
   int? certified;
   int? admin;
   @JsonKey(name: 'email_verified_at')
-  DateTime? emailVerifiedAt;
+  dynamic emailVerifiedAt;
   @JsonKey(name: 'created_at')
   DateTime? createdAt;
   @JsonKey(name: 'updated_at')
@@ -51,7 +51,7 @@ class User {
     String? email,
     int? certified,
     int? admin,
-    DateTime? emailVerifiedAt,
+    dynamic emailVerifiedAt,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {

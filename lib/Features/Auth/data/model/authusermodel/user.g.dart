@@ -14,9 +14,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       email: json['email'] as String?,
       certified: (json['certified'] as num?)?.toInt(),
       admin: (json['admin'] as num?)?.toInt(),
-      emailVerifiedAt: json['email_verified_at'] == null
-          ? null
-          : DateTime.parse(json['email_verified_at'] as String),
+      emailVerifiedAt: json['email_verified_at'],
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -33,7 +31,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'email': instance.email,
       'certified': instance.certified,
       'admin': instance.admin,
-      'email_verified_at': instance.emailVerifiedAt?.toIso8601String(),
+      'email_verified_at': instance.emailVerifiedAt,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
