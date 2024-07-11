@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterstarter/Core/Helper/CustomBox.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Core/ui/Animation.dart';
 import 'package:flutterstarter/Features/Events/Presentation/view/EventDetailsScreen.dart';

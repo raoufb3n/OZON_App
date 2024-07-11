@@ -9,7 +9,7 @@ class Datum {
   int? reposts;
   int? likeCount;
   int? commentsCount;
-  List<String>? images;
+  List<dynamic> images;
   String? type;
   DateTime? createdAt;
   bool? liked;
@@ -21,7 +21,7 @@ class Datum {
     this.reposts,
     this.likeCount,
     this.commentsCount,
-    this.images,
+    required this.images,
     this.type,
     this.createdAt,
     this.liked,
@@ -41,7 +41,7 @@ class Datum {
         reposts: json['reposts'] as int?,
         likeCount: json['like_count'] as int?,
         commentsCount: json['comments_count'] as int?,
-        images: json['images'] as List<String>?,
+        images: json['images'] as List<dynamic>,
         type: json['type'] as String?,
         createdAt: json['created_at'] == null
             ? null

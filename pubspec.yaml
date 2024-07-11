@@ -46,6 +46,7 @@ dependencies:
   get_it: ^7.7.0
   google_fonts: ^6.2.1
   json_annotation: ^4.9.0
+  like_button: ^2.0.5
   logger: ^2.3.0
   shimmer: ^3.0.0
   social_share: ^2.3.1

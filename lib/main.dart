@@ -9,6 +9,7 @@ import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/starte
 import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/event_cubit.dart';
 import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/partcipate_in_event_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/view/Layout.dart';
+import 'package:flutterstarter/Features/Home/presentation/viewModel/cubit/post_cubit.dart';
 import 'package:flutterstarter/Features/Home/viewModel/cubit/layout_cubit.dart';
 
 void main() {
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LayoutCubit()),
         BlocProvider(
           create: (context) => PartcipateInEventCubit(),
+        ),
+        BlocProvider(create: 
+        (context)=>PostCubit()
         )
       ],
       child: ScreenUtilInit(

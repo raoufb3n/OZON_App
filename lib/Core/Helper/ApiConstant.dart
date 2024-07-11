@@ -26,4 +26,5 @@ abstract class Endpoints {
   static const String shareEvent = '/share';
   static const String eventUsers = '/events/users';
   static const String eventValidation = '/validate';
+  static const String posts = '/posts';
 }

@@ -61,7 +61,7 @@ class LayoutScreen extends StatelessWidget {
                       ? Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.onSecondary,
                 ),
-                label: 'Accueil',
+                label: 'Evnements',
               ),
               NavigationDestination(
                 icon: Image.asset(
@@ -71,7 +71,7 @@ class LayoutScreen extends StatelessWidget {
                       : Theme.of(context).colorScheme.onSecondary,
                   height: 24.h,
                 ),
-                label: 'Accueil',
+                label: 'Profile',
               ),
             ],
           ),
