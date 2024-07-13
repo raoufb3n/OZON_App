@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutterstarter/Core/index.dart';
 
 class SocialLinkItem extends StatelessWidget {

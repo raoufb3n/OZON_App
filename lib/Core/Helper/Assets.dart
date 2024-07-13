@@ -1,6 +1,4 @@
-
-
-class Assets{
+class Assets {
   Assets._();
 
   static const String logo = 'assets/Logo.png';
@@ -35,10 +33,7 @@ class Assets{
   static const String settings = 'assets/settings.png';
   static const String close = 'assets/close.png';
   static const String clock = 'assets/clock.png';
-  static const String instagram='assets/instagram.png';
-  static const String whatsapp='assets/whatsapp.png';
-  static const String telegram='assets/telegram.png';
-
-
-
+  static const String instagram = 'assets/instagram.png';
+  static const String whatsapp = 'assets/whatsapp.png';
+  static const String telegram = 'assets/telegram.png';
 }

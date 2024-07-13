@@ -1,12 +1,45 @@
-import 'package:flutterstarter/Core/Helper/Extensions.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutterstarter/Core/index.dart';
+import 'package:flutterstarter/Core/ui/Animation.dart';
+import 'package:flutterstarter/Features/Auth/presentation/view/LoginScreen.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/widget/SMAuthSection.dart';
+import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/auth_cubit.dart';
+import 'package:flutterstarter/Features/Home/presentation/view/HomeScreen.dart';
 
 import 'widget/CustomInputTextField.dart';
 
-class Registerscreen extends StatelessWidget {
+class Registerscreen extends StatefulWidget {
   const Registerscreen({super.key});
 
+  @override
+  State<Registerscreen> createState() => _RegisterscreenState();
+}
+
+class _RegisterscreenState extends State<Registerscreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController password1Controller = TextEditingController();
+  final TextEditingController nomController = TextEditingController();
+  final TextEditingController prenomController = TextEditingController();
+  bool obsecure = true;
+  void onTap() {
+    setState(() {
+      obsecure = !obsecure;
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    password1Controller.dispose();
+    nomController.dispose();
+    prenomController.dispose();
+    super.dispose();
+  }
+
+  final _formKey = GlobalKey<FormState>();
+  String helperText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,88 +47,238 @@ class Registerscreen extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(top: 48, left: 16, right: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 75.r,
-                width: 75.r,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                        colors: [
-                          Theme.of(context).colorScheme.primary,
-                          Theme.of(context).colorScheme.primary.withOpacity(0.0)
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter)),
-                child: Image.asset(
-                  Assets.cat,
-                ),
-              ),
-              verticalBox(16),
-              Text(
-                'Inscription',
-                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
+        child: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              orElse: () {},
+              loaded: (user) {
+                showModalBottomSheet(
+                    context: context,
+                    constraints: BoxConstraints(
+                      minHeight: 200.r,
+                      maxHeight: 200.r,
                     ),
-              ),
-              verticalBox(24),
-              Row(
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Vous vous êtes connecté avec succès',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface),
+                            ),
+                            verticalBox(16),
+                            CustomButton(
+                              title: 'Continue',
+                              onPressed: () {
+                                context.pushReplacement(FadeSlidePageTransition(
+                                    page: const Homescreen()));
+                              },
+                            )
+                          ],
+                        ),
+                      );
+                    });
+              },
+            );
+          },
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
                 children: [
-                  const Expanded(
-                    child: CustomInputTextField(
-                      label: 'Prénom',
-                      obsecure: false,
+                  Container(
+                    height: 75.r,
+                    width: 75.r,
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                            colors: [
+                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.0)
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter)),
+                    child: Image.asset(
+                      Assets.cat,
                     ),
                   ),
-                  horizontalBox(8),
-                  const Expanded(
-                    child: CustomInputTextField(
-                      label: 'Nom',
-                      obsecure: false,
-                    ),
-                  ),
-                ],
-              ),
-              verticalBox(16),
-              const CustomInputTextField(
-                label: 'Email',
-                obsecure: false,
-              ),
-              verticalBox(16),
-              const CustomInputTextField(label: 'Mot de passe', obsecure: true),
-              verticalBox(16),
-              const CustomInputTextField(label: 'Mot de passe', obsecure: true),
-              verticalBox(12),
-              CustomButton(
-                title: 'S’inscrire',
-                onPressed: () {},
-              ),
-              verticalBox(16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                  verticalBox(16),
                   Text(
-                    'Vous n\'avez pas de compte ?',
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface),
+                    'Inscription',
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                   ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Inscription',
+                  verticalBox(24),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomInputTextField(
+                          key: const ValueKey('prenom'),
+                          label: 'Prénom',
+                          controller: prenomController,
+                          isPass: false,
+                          obsecure: false,
+                          validator: (p1) {
+                            if (p1 == null || p1.isEmpty) {
+                              return 'Prénom est obligatoire';
+                            }
+                            if (!p1.isUsername()) {
+                              return 'Prénom invalide';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      horizontalBox(8),
+                      Expanded(
+                        child: CustomInputTextField(
+                          label: 'Nom',
+                          obsecure: false,
+                          isPass: false,
+                          controller: nomController,
+                          validator: (p1) {
+                            if (p1 == null || p1.isEmpty) {
+                              return 'Prénom est obligatoire';
+                            }
+                            if (!p1.isUsername()) {
+                              return 'Prénom invalide';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  verticalBox(16),
+                  CustomInputTextField(
+                    key: const ValueKey('email'),
+                    label: 'Email',
+                    obsecure: false,
+                    isPass: false,
+                    controller: emailController,
+                    inputType: TextInputType.emailAddress,
+                    validator: (p0) {
+                      if (p0 == null || p0.isEmpty) {
+                        return 'Email est obligatoire';
+                      }
+                      if (!p0.isEmail()) {
+                        return 'Email invalide';
+                      }
+                      return null;
+                    },
+                  ),
+                  verticalBox(16),
+                  CustomInputTextField(
+                    label: 'Mot de passe',
+                    isPass: true,
+                    obsecure: obsecure,
+                    onTap: onTap,
+                    controller: password1Controller,
+                    validator: (p1) {
+                      if (p1 == null || p1.isEmpty) {
+                        return 'Mot de pass est obligatoire';
+                      }
+
+                      return null;
+                    },
+                  ),
+                  verticalBox(16),
+                  CustomInputTextField(
+                    label: 'Confirmez mot de passe',
+                    isPass: true,
+                    obsecure: obsecure,
+                    onTap: onTap,
+                    validator: (p0) {
+                      if (p0 == null || p0.isEmpty) {
+                        return 'Mot de pass est obligatoire';
+                      }
+                      if (p0 != password1Controller.text) {
+                        return 'Mot de passe ne correspond pas';
+                      }
+                      return null;
+                    },
+                  ),
+                  verticalBox(12),
+                  SizedBox(
+                    child: BlocBuilder<AuthCubit, AuthState>(
+                      builder: (context, state) {
+                        return state.when(initial: () {
+                          return CustomButton(
+                            title: 'S’inscrire',
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                context.read<AuthCubit>().register(
+                                    emailController.text,
+                                    password1Controller.text,
+                                    nomController.text,
+                                    prenomController.text);
+                              }
+                            },
+                          );
+                        }, loading: () {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          );
+                        }, error: (e) {
+                          return Center(
+                              child: Text(
+                            e.toString(),
+                            style: Theme.of(context).textTheme.labelLarge!,
+                          ));
+                        }, loaded: (user) {
+                          return CustomButton(
+                              title: 'Success',
+                              onPressed: () {
+                                context.pushReplacement(FadeSlidePageTransition(
+                                    page: const Homescreen()));
+                              });
+                        });
+                      },
+                    ),
+                  ),
+                  verticalBox(16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Vous possédez déjà un compte ?',
                         style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.primary),
-                      )),
+                            color: Theme.of(context).colorScheme.onSurface),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            context.pushReplacement(FadeSlidePageTransition(
+                                page: const LoginScreen()));
+                          },
+                          child: Text(
+                            'Connexion',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                          )),
+                    ],
+                  ),
+                  const Expanded(flex: 0, child: const SMAuthSection())
                 ],
               ),
-              
-              Expanded(
-                flex: 0,
-                child: const SMAuthSection())
-            ],
+            ),
           ),
         ),
       )),

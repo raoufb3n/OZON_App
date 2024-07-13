@@ -1,5 +1,7 @@
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/LoginScreen.dart';
+import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/partcipate_in_event_cubit.dart';
+import 'package:flutterstarter/Features/Events/data/model/event/datum.dart';
 
 import '../../../../Core/index.dart';
 import 'widgets/CustomBottomSheet.dart';
@@ -7,8 +9,8 @@ import 'widgets/DateCustomWidget.dart';
 import 'widgets/NumericAvatar.dart';
 
 class Eventdetailsscreen extends StatefulWidget {
-  const Eventdetailsscreen({super.key});
-
+  const Eventdetailsscreen({super.key, required this.model});
+  final Datum model;
   @override
   State<Eventdetailsscreen> createState() => _EventdetailsscreenState();
 }
@@ -81,7 +83,9 @@ class _EventdetailsscreenState extends State<Eventdetailsscreen> {
                 Assets.arrow,
                 height: 24,
               )),
-          onPressed: () {},
+          onPressed: () {
+            context.pop();
+          },
         ),
         title: Text(
           'Détails de l\'évènement',
@@ -109,68 +113,69 @@ class _EventdetailsscreenState extends State<Eventdetailsscreen> {
                 ),
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              child: Stack(
-                children: [
-                  PageView(
-                    controller: _pageController,
-                    onPageChanged: (value) {
-                      setState(() {
-                        index = value;
-                      });
+              child: widget.model.images!.isNotEmpty
+                  ? Stack(
+                      children: [
+                        PageView(
+                          controller: _pageController,
+                          onPageChanged: (value) {
+                            setState(() {
+                              index = value;
+                            });
 
-                      _pageController.animateToPage(
-                        value,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeIn,
-                      );
-                    },
-                    children: [
-                      Image.asset(
-                        Assets.eventPicture,
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        Assets.eventPicture,
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        Assets.eventPicture,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    bottom: 8,
-                    right: 150,
-                    left: 150,
-                    child: DotsIndicator(
-                      dotsCount: 3,
-                      position: index,
-                      decorator: DotsDecorator(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onPrimary
-                            .withOpacity(0.35),
-                        activeColor: Theme.of(context).colorScheme.onPrimary,
-                        size: const Size.square(9.0),
-                        activeSize: const Size(18.0, 9.0),
-                        activeShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                            _pageController.animateToPage(
+                              value,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn,
+                            );
+                          },
+                          children: [
+                            for (var i = 0;
+                                i < widget.model.images!.length;
+                                i++)
+                              Image.network(
+                                widget.model.images![i],
+                                fit: BoxFit.cover,
+                              ),
+                          ],
+                        ),
+                        Positioned(
+                          bottom: 8,
+                          right: 150,
+                          left: 150,
+                          child: DotsIndicator(
+                            dotsCount: widget.model.images!.length,
+                            position: index,
+                            decorator: DotsDecorator(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onPrimary
+                                  .withOpacity(0.35),
+                              activeColor:
+                                  Theme.of(context).colorScheme.onPrimary,
+                              size: const Size.square(9.0),
+                              activeSize: const Size(18.0, 9.0),
+                              activeShape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  : SizedBox(),
             ),
             verticalBox(16),
             Text(
-              'Plantation d’arbres pour créer une forêt',
+              widget.model.name!,
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
             ),
             verticalBox(12),
-            const DateCustomWidget(),
+            DateCustomWidget(
+              date: widget.model.start!.substring(0, 10),
+              time: widget.model.start!.substring(11, 18),
+            ),
             verticalBox(24),
             Text(
               'Programme de l’évènement',
@@ -208,9 +213,63 @@ class _EventdetailsscreenState extends State<Eventdetailsscreen> {
           children: [
             SizedBox(
               width: 250.w,
-              child: CustomButton(
-                title: 'Prendre une place',
-                onPressed: () {},
+              child:
+                  BlocBuilder<PartcipateInEventCubit, PartcipateInEventState>(
+                builder: (context, state) {
+                  return state.when(initial: () {
+                    return CustomButton(
+                      title: 'Prendre une place',
+                      onPressed: () {
+                        context
+                            .read<PartcipateInEventCubit>()
+                            .participateInEvent(widget.model.id!);
+                      },
+                    );
+                  }, loading: () {
+                    return SizedBox(
+                      width: context.screenWidth,
+                      child: ElevatedButton(
+                          onPressed: () {},
+                          style: Theme.of(context)
+                              .filledButtonTheme
+                              .style!
+                              .copyWith(
+                                backgroundColor: WidgetStatePropertyAll(
+                                    Theme.of(context).colorScheme.surface),
+                              ),
+                          child: CircularProgressIndicator()),
+                    );
+                  }, loaded: (loaded) {
+                    return SizedBox(
+                      width: context.screenWidth,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style:
+                            Theme.of(context).filledButtonTheme.style!.copyWith(
+                                  backgroundColor: WidgetStatePropertyAll(
+                                      Theme.of(context).colorScheme.surface),
+                                ),
+                        child: Text(
+                          'Annuler la place',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                        ),
+                      ),
+                    );
+                  }, error: (message) {
+                    return InkWell(
+                        onTap: () {
+                          context
+                              .read<PartcipateInEventCubit>()
+                              .participateInEvent(widget.model.id!);
+                        },
+                        child: Text('Try Agin'));
+                  });
+                },
               ),
             ),
             const Spacer(),

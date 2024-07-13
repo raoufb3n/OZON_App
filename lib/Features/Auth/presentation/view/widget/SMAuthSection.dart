@@ -9,7 +9,7 @@ class SMAuthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 52),
+      padding: const EdgeInsets.only(top: 52, bottom: 24),
       child: Column(
         children: [
           Row(
