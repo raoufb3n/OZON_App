@@ -19,11 +19,11 @@ samples, guidance on mobile development, and a full API reference.
 Clone the repository:
 
 ```bash
-git clone https://github.com/raoufb3n/ozone-app.git
+git clone https://github.com/Umbrella-team-SquidTech/OZON-Mobile.git
 ```
 Navigate to the project directory:
 ```bash
-cd ozone-app
+cd OZON-Mobile
 ```
 Install dependencies:
 ```bash
