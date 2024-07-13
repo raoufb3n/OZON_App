@@ -28,21 +28,5 @@ class PostCubit extends Cubit<PostState> {
     }
   }
 
-  void createPost(
-      String content, List<String> images, int orgnizerId, String type) async {
-    try {
-      final token = await AuthServicesRepo.getToken();
-      if (token != null) {
-        final message = await Postrepo()
-            .createPost(token, content, images, orgnizerId, type);
-        emit(PostState.postCreated());
-      } else {
-        emit(PostState.postError());
-      }
-    } on HandleError catch (e) {
-      emit(PostState.postError());
-    } catch (e) {
-      emit(PostState.postError());
-    }
-  }
+ 
 }

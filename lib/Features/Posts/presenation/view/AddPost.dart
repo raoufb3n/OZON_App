@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/LoginScreen.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/widget/CustomInputTextField.dart';
+import 'package:flutterstarter/Features/Home/presentation/viewModel/cubit/post_creation_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/viewModel/cubit/post_cubit.dart';
 
 class AddPostScreen extends StatefulWidget {
@@ -54,12 +55,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     ),
               ),
               verticalBox(8),
-              CustomInputTextField(
+              const CustomInputTextField(
                 label: 'titre',
                 obsecure: false,
                 isPass: false,
               ),
-              CustomInputTextField(
+              const CustomInputTextField(
                 label: 'Sujet',
                 obsecure: false,
                 isPass: false,
@@ -79,8 +80,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         width: context.screenWidth,
                         child: ElevatedButton(
                           
-                          onPressed: () => context.read<PostCubit>().createPost(
-                              'vfdsgfdgfdgdf', images, orgnizerId, type),
+                          onPressed: () => context.read<PostCreationCubit>().createPost(
+                              content.text,),
                           child: Text(
                             message,
                             style: Theme.of(context)
@@ -97,8 +98,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       return CustomButton(
                           title: 'Ajouter',
                           onPressed: () {
-                            context.read<PostCubit>().createPost(
-                                content.text, images, orgnizerId, type);
+                            context.read<PostCreationCubit>().createPost(
+                                content.text);
                           });
                     },
                   );

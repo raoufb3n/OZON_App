@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutterstarter/Core/Helper/Failure.dart';
 import 'package:flutterstarter/Features/Auth/data/domain/repos/AuthServiceRepo.dart';
+import 'package:flutterstarter/Features/Auth/data/model/authusermodel/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'auth_cubit.freezed.dart';
 
@@ -17,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
           await AuthServicesRepo().signIn(email, password, name, lastName);
       AuthServicesRepo.persistData(user.token);
 
-      emit(AuthState.loaded());
+      emit(AuthState.loaded(user.user!));
     } on HandleError catch (e) {
       emit(AuthState.error(e.toString()));
     } catch (e) {
@@ -33,7 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final user = await AuthServicesRepo().login(email, password);
       AuthServicesRepo.persistData(user.token);
-      emit(AuthState.loaded());
+      emit(AuthState.loaded(user.user!));
     } on HandleError catch (e) {
       emit(AuthState.error(e.toString()));
     } catch (e) {

@@ -51,7 +51,7 @@ class _RegisterscreenState extends State<Registerscreen> {
           listener: (context, state) {
             state.maybeWhen(
               orElse: () {},
-              loaded: () {
+              loaded: (user) {
                 showModalBottomSheet(
                     context: context,
                     constraints: BoxConstraints(
@@ -239,7 +239,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                             e.toString(),
                             style: Theme.of(context).textTheme.labelLarge!,
                           ));
-                        }, loaded: () {
+                        }, loaded: (user) {
                           return CustomButton(
                               title: 'Success',
                               onPressed: () {

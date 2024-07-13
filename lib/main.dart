@@ -1,6 +1,7 @@
 import 'package:flutterstarter/Core/Helper/DioHelper.dart';
 import 'package:flutterstarter/Core/Routing/AppRouter.dart';
 import 'package:flutterstarter/Core/index.dart';
+import 'package:flutterstarter/Core/ui/Animation.dart';
 import 'package:flutterstarter/Features/Auth/data/model/authusermodel/user.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/RegisterScreen.dart';
 import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/auth_cubit.dart';
@@ -9,6 +10,7 @@ import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/starte
 import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/event_cubit.dart';
 import 'package:flutterstarter/Features/Events/Presentation/viewModel/cubit/partcipate_in_event_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/view/Layout.dart';
+import 'package:flutterstarter/Features/Home/presentation/viewModel/cubit/post_creation_cubit.dart';
 import 'package:flutterstarter/Features/Home/presentation/viewModel/cubit/post_cubit.dart';
 import 'package:flutterstarter/Features/Home/viewModel/cubit/layout_cubit.dart';
 
@@ -29,15 +31,16 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthCubit(),
         ),
         BlocProvider(
-          create: (context) => StartedAppCubit()..onAppStarted(),
+          create: (context) => StartedAppCubit(),
         ),
         BlocProvider(create: (context) => EventCubit()),
         BlocProvider(create: (context) => LayoutCubit()),
         BlocProvider(
           create: (context) => PartcipateInEventCubit(),
         ),
+        BlocProvider(create: (context) => PostCubit()),
         BlocProvider(create: 
-        (context)=>PostCubit()
+        (context)=>PostCreationCubit()
         )
       ],
       child: ScreenUtilInit(
@@ -54,6 +57,7 @@ class MyApp extends StatelessWidget {
             home: BlocBuilder<StartedAppCubit, StartedAppState>(
               builder: (context, state) {
                 return state.when(initial: () {
+                  context.read<StartedAppCubit>().onAppStarted();
                   return const Scaffold(
                     body: Center(
                       child: CircularProgressIndicator(),
@@ -71,7 +75,7 @@ class MyApp extends StatelessWidget {
                       child: CustomButton(
                         title: 'Essayer',
                         onPressed: () {
-                          context.read<StartedAppCubit>().onAppStarted();
+                          context.pushReplacement(FadeSlidePageTransition(page:const Registerscreen()));
                         },
                       ),
                     ),
