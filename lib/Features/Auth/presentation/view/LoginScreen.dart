@@ -3,6 +3,7 @@ import 'package:flutter_regex/flutter_regex.dart';
 import 'package:flutterstarter/Core/Helper/Extensions.dart';
 import 'package:flutterstarter/Core/index.dart';
 import 'package:flutterstarter/Core/ui/Animation.dart';
+import 'package:flutterstarter/Features/Auth/data/model/authusermodel/user.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/RegisterScreen.dart';
 import 'package:flutterstarter/Features/Auth/presentation/view/widget/SMAuthSection.dart';
 import 'package:flutterstarter/Features/Auth/presentation/viewModel/cubit/auth_cubit.dart';
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             state.maybeWhen(
               orElse: () {},
-              loaded: () {
+              loaded: (user) {
                 showModalBottomSheet(
                     context: context,
                     constraints: BoxConstraints(
@@ -180,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         },
-                        loaded: () {
+                        loaded: (user) {
                           return CustomButton(
                             title: 'Success',
                             onPressed: () {

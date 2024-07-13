@@ -6,6 +6,5 @@ class PostState with _$PostState {
   const factory PostState.loading() = _Loading;
   const factory PostState.loaded(List<Datum> posts) = _Loaded;
   const factory PostState.error(String message) = _Error;
-  const factory PostState.postCreated() = _PostCreated;
-  const factory PostState.postError() = _PostError;
+
 }
