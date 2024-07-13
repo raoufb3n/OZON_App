@@ -1,19 +1,17 @@
-# OZON
+![Thumnail](https://github.com/raoufb3n/OZON-Mobile/blob/main/assets/Readmecover.png?raw=true)
 
-A new Flutter project.
+## Ozon Ecological Mobile App
 
-## Getting Started
+Ozon is an ecological app built using Flutter, developed during the Squid Tech Hackathon. It aims to promote environmental awareness and sustainability by allowing users to track their contributions to various eco-friendly activities such as recycling, waste management, and tree planting
 
-This project is a starting point for a Flutter application.
+## Ozon Screens
+![Thumnail](https://github.com/raoufb3n/OZON-Mobile/blob/main/assets/Authreadme.png?raw=true)
+##
+![Thumnail](https://github.com/raoufb3n/OZON-Mobile/blob/main/assets/eventsreadme.png?raw=true)
+##
+![Thumnail](https://github.com/raoufb3n/OZON-Mobile/blob/main/assets/othersreadme.png?raw=true)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 ## Installation
 
 Clone the repository:
@@ -33,4 +31,5 @@ Run the app:
 ```bash
 flutter run
 ```
+
 
