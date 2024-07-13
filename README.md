@@ -17,7 +17,7 @@ Ozon is an ecological app built using Flutter, developed during the Squid Tech H
 Clone the repository:
 
 ```bash
-git clone https://github.com/Umbrella-team-SquidTech/OZON-Mobile.git
+git clone https://github.com/raoufb3n/OZON-Mobile.git
 ```
 Navigate to the project directory:
 ```bash
