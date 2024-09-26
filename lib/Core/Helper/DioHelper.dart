@@ -55,7 +55,7 @@ class DioHelper {
   /// example:
   /// ```dart
   /// return await DioHelper.getData(
-  ///    url: "${Endpoints.member}/$id",
+  ///    
   ///    token: token,
   /// );
   ///
@@ -122,7 +122,7 @@ class DioHelper {
   /// example:
   /// ```dart
   /// return await DioHelper.putData(
-  /// url: "${Endpoints.member}/$id",
+  /// 
   /// token: token,
   /// data: {
   /// 'memberName': memberName,
@@ -159,7 +159,7 @@ class DioHelper {
   /// example:
   /// ```dart
   /// return await DioHelper.deleteData(
-  /// url: "${Endpoints.member}/$id",
+  /// 
   /// token: token,
   /// );
   /// ```
@@ -185,4 +185,3 @@ class DioHelper {
     );
   }
 }
-//https://project-platform.onrender.com/api/v1/
